@@ -162,6 +162,7 @@ export default class App extends Component {
         window.location.href = detailDomain + book;
     }
     render() {
+        //测试
         // let {data: {banner}} = this.props;
         let {filter, diandu, currentGradeData, recentReadBooks} = this.state;
         return ( <div className="App">
