@@ -1,0 +1,126 @@
+.App {
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+}
+
+.App .recentClick {
+    height: 44px;
+    border-top: 1px solid #ececec;
+    border-bottom: 0px solid gray;
+    background: white;
+    margin-top: -2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.App .recentClick .bar {
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.App .recentClick .textDet {
+    margin-left: 10px;
+    font-size: 15px;
+    color: #666666;
+}
+
+.App .recentSubject {
+    border: 0px solid gray;
+    margin: 0 15px;
+    /*height: 150px;*/
+    display: flex;
+    justify-content: flex-start;
+}
+
+.App .recentSubject .subject {
+    width: 33.3%;
+    /*height: 123%;*/
+    border: 0px solid red;
+}
+
+.App .recentSubject .subject .img {
+}
+
+.imgPanel img {
+    width: 100%;
+}
+
+.weui-media-box_appmsg .weui-media-box__hd {
+    width: auto;
+    height: auto;
+}
+
+.banben {
+    text-align: left;
+    color: #242424;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.weui-panel {
+    margin-top: 0;
+}
+
+.weui-panel__hd {
+    background: #f9f9f9;
+}
+
+.weui-media-box__title {
+    font-size: 14px;
+}
+
+.weui-navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: static;
+    /* z-index: 500; */
+    top: 0;
+    width: 100%;
+    height: 44px;
+    line-height: 120%;
+    font-size: 13px;
+    background-color: white;
+    margin-top: 0;
+}
+
+.weui-navbar__item {
+    font-size: 13px;
+}
+
+/*@media screen and (max-width: 362px) { !*当屏幕尺寸小于362px时，应用下面的CSS样式*!*/
+/*.titleBox{*/
+/*margin-left: 54px;*/
+/*}*/
+/*}*/
+.filterNav.active {
+    color: #30ace5;
+}
+
+.filterNav {
+    color: #666;
+}
+
+.weui-navbar__item {
+    position: static;
+}
+
+.weui-navbar + .weui-tab__panel {
+    padding-top: 5px;
+}
+
+.weui-tab {
+    margin-top: -6px;
+}
+
+.weui-panel:first-child {
+    margin-top: 10px;
+}
+
+.weui-media-box_appmsg .weui-media-box__hd{
+    line-height: 0;
+}
