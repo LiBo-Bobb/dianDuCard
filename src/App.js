@@ -88,6 +88,12 @@ export default class App extends Component {
     }
 
 
+    //lodash
+    handleData = () => {
+
+    }
+
+
     //获取数据
     geeData_diandu = () => {
         request.get(api).query().then(
@@ -125,6 +131,7 @@ export default class App extends Component {
             })
         })
     }
+
     //隐藏dialog
     hideDialog() {
         this.setState({
@@ -161,11 +168,12 @@ export default class App extends Component {
     gotoDetail = (book) => {
         window.location.href = detailDomain + book;
     }
+
     render() {
         //测试
         // let {data: {banner}} = this.props;
         let {filter, diandu, currentGradeData, recentReadBooks} = this.state;
-        return ( <div className="App">
+        return (<div className="App">
             <div className="imgPanel">
                 <img src={topTingxie} alt="gankao"/>
             </div>
