@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {groupBy} from 'lodash'
+import {groupBy, chunk} from 'lodash'
 import 'weui';
 import 'react-weui/build/packages/react-weui.css';
 import blue from './img/blue.png'
@@ -90,9 +90,17 @@ export default class App extends Component {
 
     //lodash
     handleData = () => {
+        let users = [
+            {'user': 'barney', 'age': 36, 'active': true},
+            {'user': 'fred', 'age': 40, 'active': false},
+            {'user': 'pebbles', 'age': 1, 'active': true}
+        ];
 
+        // let chunk = chunk(['a', 'b', 'c', 'd'], 3)
+
+        let groupBy = groupBy(['one', 'two', 'three'], "length");
+        console.log(groupBy)
     }
-
 
     //获取数据
     geeData_diandu = () => {
@@ -174,7 +182,7 @@ export default class App extends Component {
         // let {data: {banner}} = this.props;
         let {filter, diandu, currentGradeData, recentReadBooks} = this.state;
         return (<div className="App">
-            <div className="imgPanel">
+            <div className="imgPanel" onClick={this.handleData}>
                 <img src={topTingxie} alt="gankao"/>
             </div>
             <Dialog type="ios"
