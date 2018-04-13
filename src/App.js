@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom'
 import {groupBy, chunk} from 'lodash'
 import 'weui';
 import 'react-weui/build/packages/react-weui.css';
@@ -99,19 +100,36 @@ export default class App extends Component {
         // let chunk = chunk(['a', 'b', 'c', 'd'], 3)
 
         let groupBy = groupBy(['one', 'two', 'three'], "length");
-        console.log(groupBy)
+        // console.log(groupBy)
     }
+
+    Clock = (props) => {
+        return (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>It is {props.date.toLocaleTimeString()}.</h2>
+            </div>
+        );
+    }
+
+    // tick = () => {
+    //     ReactDOM.render(
+    //         <Clock date={new Date()}/>,
+    //         document.getElementById('root')
+    //     );
+    // }
+
 
     //获取数据
     geeData_diandu = () => {
         request.get(api).query().then(
             res => {
                 let datas = res.body;
+                // console.log("------------")
                 // console.log(datas)
-                console.log(datas)
                 datas = groupBy(datas, 'grade')
-                console.log("按年级分组....")
-                console.log(datas)
+                // console.log("按年级分组....")
+                // console.log(datas)
                 let keys = Object.keys(datas)
                 //取到对象的key
                 // console.log('keys......')
@@ -130,7 +148,7 @@ export default class App extends Component {
                     currentGradeData: this.transform(datas["一年级"])
                 })
                 this.transform(datas["一年级"])
-                console.log(this.transform(datas["一年级"]))
+                // console.log(this.transform(datas["一年级"]))
             }
         ).catch(err => {
             console.log(`错误${err}`);
@@ -166,8 +184,8 @@ export default class App extends Component {
             localStorage.setItem("recentBooks", "[]");
         }
         let arr = JSON.parse(localStorage.getItem("recentBooks"));
-        console.log("arr,,,..")
-        console.log(arr)
+        // console.log("arr,,,..")
+        // console.log(arr)
         this.setState({
             recentReadBooks: arr
         })
