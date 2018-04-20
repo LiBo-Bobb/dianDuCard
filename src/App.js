@@ -93,7 +93,6 @@ export default class App extends Component {
 
     }
 
-
     //获取数据
     geeData_diandu = () => {
         request.get(api).query().then(
@@ -106,8 +105,8 @@ export default class App extends Component {
                 console.log(datas)
                 let keys = Object.keys(datas)
                 //取到对象的key
-                // console.log('keys......')
-                // console.log(keys)
+                console.log('keys......')
+                console.log(keys)
                 for (let key of keys) {
                     // console.log("遍历数组元素key.......")
                     // console.log(key)
@@ -115,8 +114,8 @@ export default class App extends Component {
                     // console.log(groupBy(datas[key], 'version'))
                     datas[key] = groupBy(datas[key], 'version')
                 }
-                // console.log("datas最终处理版本.....")
-                // console.log(datas)
+                console.log("datas最终处理版本.....")
+                console.log(datas)
                 this.setState({
                     diandu: datas,
                     currentGradeData: this.transform(datas["一年级"])
@@ -158,8 +157,8 @@ export default class App extends Component {
             localStorage.setItem("recentBooks", "[]");
         }
         let arr = JSON.parse(localStorage.getItem("recentBooks"));
-        console.log("arr,,,..")
-        console.log(arr)
+        // console.log("arr,,,..")
+        // console.log(arr)
         this.setState({
             recentReadBooks: arr
         })
