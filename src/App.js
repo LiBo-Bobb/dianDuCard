@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {groupBy} from 'lodash'
 import 'weui';
 import 'react-weui/build/packages/react-weui.css';
 import blue from './img/blue.png'
@@ -23,8 +22,24 @@ import {
 } from 'react-weui';
 import './App.css';
 
+
 const api = window.apiSite;
 const detailDomain = 'http://www.gankao.com/diandu/app.html?book=';
+import {
+    groupBy,
+    concat,
+    compact,
+    difference,
+    differenceBy,
+    drop,
+    dropRightWhile,
+    fill,
+    findIndex,
+    findLastIndex,
+    flatten,
+    flattenDeep,
+    fromPairs
+} from 'lodash'
 
 export default class App extends Component {
     constructor(props) {
@@ -85,11 +100,57 @@ export default class App extends Component {
     componentDidMount() {
         this.geeData_diandu()
         this.handleRecentBooks()
+        this.handleData()
     }
 
 
     //lodash
     handleData = () => {
+        let users = [
+            {'user': 'barney', 'active': true},
+            {'user': 'fred', 'active': false},
+            {'user': 'pebbles', 'active': false}
+        ];
+        /* //数组拼接
+         let arr = [1];
+         let new_arr = concat(arr, 2, [3], [[23]])
+         console.log("数组拼接......", new_arr)
+         //过滤数组元素中的假值
+         let compact2 = compact([0, 1, false, 2, '', 3]);
+         console.log('过滤数组元素中的假值', compact2)
+         let dif = difference([3, 2, 1], [4, 2]);
+         console.log("过滤数组元素...", dif)
+
+         let a = differenceBy([3.1, 2.2, 1.3], [4.4, 2.5], Math.floor)
+         console.log(a)
+
+         let drop1 = drop([3, 2, 5, 6, 7], 2)
+         console.log("切片数组元素....", drop1)
+
+         // 创建一个切片数组，去除array中从 predicate 返回假值开始到尾部的部分。predicate 会传入3个参数： (value, index, array)。
+
+         let drw = dropRightWhile(users, function (o) {
+             return !o.active;
+         });
+
+         console.log(drw)
+
+         let fill_con = fill(Array(6), 6, 1, 3)
+
+         console.log(fill_con)
+         console.log(fill([4, 6, 8, 10], '*', 1, 3))*/
+
+
+        let cpIndex = findIndex(users, (i) => i.user === "fred")
+        // console.log(cpIndex)
+        let cp = findLastIndex(users, i => i.user === "barney")
+        // console.log(cp)
+        //flatten 减少一级array嵌套深度。
+        let flat = flatten([1, [2, [3, [4]], 5]])
+        console.log(flat)
+        //将array递归为一维数组。
+        console.log(flattenDeep([1, [2, [3, [4]], 5]]))
+
 
     }
 
@@ -99,14 +160,14 @@ export default class App extends Component {
             res => {
                 let datas = res.body;
                 // console.log(datas)
-                console.log(datas)
+                // console.log(datas)
                 datas = groupBy(datas, 'grade')
-                console.log("按年级分组....")
-                console.log(datas)
+                // console.log("按年级分组....")
+                // console.log(datas)
                 let keys = Object.keys(datas)
                 //取到对象的key
-                console.log('keys......')
-                console.log(keys)
+                // console.log('keys......')
+                // console.log(keys)
                 for (let key of keys) {
                     // console.log("遍历数组元素key.......")
                     // console.log(key)
@@ -114,14 +175,14 @@ export default class App extends Component {
                     // console.log(groupBy(datas[key], 'version'))
                     datas[key] = groupBy(datas[key], 'version')
                 }
-                console.log("datas最终处理版本.....")
-                console.log(datas)
+                // console.log("datas最终处理版本.....")
+                // console.log(datas)
                 this.setState({
                     diandu: datas,
                     currentGradeData: this.transform(datas["一年级"])
                 })
                 this.transform(datas["一年级"])
-                console.log(this.transform(datas["一年级"]))
+                // console.log(this.transform(datas["一年级"]))
             }
         ).catch(err => {
             console.log(`错误${err}`);
@@ -137,6 +198,7 @@ export default class App extends Component {
             showIOS1: false,
         });
     }
+
 
 
     // 对象转化为数组
